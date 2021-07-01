@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="w3-container">
+  <div class="w3-col m6">
+    <h1>WELCOME</h1>
+    here we are using w3.css html framework
+  </div>
+  <div class="w3-col m6">
+    <a href="{% url 'admin:login' %}">admin</a>
+  </div>
+<div>
+{% endblock %}
