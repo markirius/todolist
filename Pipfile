@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 django = "~=3.2.4"
 psycopg2 = "~=2.8.6"
-django-tailwind = "~=2.0.1"
+python-decouple = "3.4"
 
 [dev-packages]
 ipython = "~=7.24.1"
