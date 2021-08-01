@@ -1,4 +1,7 @@
+from datetime import datetime
+
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 from django.db import models
 
 
@@ -24,3 +27,9 @@ class Task(BaseModel):
 
     def __str__(self):
         return self.title
+
+    def clean(self, *args, **kwargs):
+        text = "the deadline must be equal to or greater than today's date"
+        super(Task, self).clean(*args, **kwargs)
+        if self.due_date < datetime.today():
+            raise ValidationError(text)

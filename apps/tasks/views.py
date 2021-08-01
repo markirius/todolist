@@ -1,4 +1,3 @@
-from django.template.defaultfilters import slugify
 from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
@@ -21,7 +20,6 @@ class TaskCreate(CreateView):
     def form_valid(self, form):
         form = form.save(commit=False)
         title = form.cleaned_data['title']
-        slug = slugify(title)
         content = form.cleaned_data['content']
         due_date = form.cleaned_data['due_date']
         done = form.cleaned_data['done']
