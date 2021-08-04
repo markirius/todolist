@@ -14,18 +14,12 @@ class TaskList(ListView):
 
 class TaskCreate(CreateView):
     model = Task
-    fields = ['title', 'content', 'due_date', 'done']
-    form = TaskForm
+    form_class = TaskForm
+    success_url = reverse_lazy('home')
 
     def form_valid(self, form):
-        form = form.save(commit=False)
-        title = form.cleaned_data['title']
-        content = form.cleaned_data['content']
-        due_date = form.cleaned_data['due_date']
-        done = form.cleaned_data['done']
-        form.save()
-        return super(form_valid, self).form_valid(form)
-
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
 
 
 class TaskUpdate(UpdateView):

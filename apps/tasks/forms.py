@@ -25,5 +25,12 @@ class TaskForm(ModelForm):
             'done': ('Done')
         }
         widgets = {
-            'due_date': DateTimeInput()
+            'due_date': DateInput(
+                            format=('%m/%d/%Y'),
+                            attrs={
+                                'class': 'form-control',
+                                'placeholder': 'Select a date',
+                                'type': 'date',
+                            }
+                        ),
         }
